@@ -18,6 +18,7 @@ export class ResetPasswordComponent implements OnInit {
     seed:new FormControl(null,[Validators.required]),
 
   })
+  dialogRef: any;
 
   constructor( private _AuthService:AuthService,private toastr: ToastrService) { }
 
@@ -33,6 +34,7 @@ export class ResetPasswordComponent implements OnInit {
        
         
       },error:(err:any)=>{
+        
         this.toastr.error('Hello world!', 'Toastr fun!');
 
 
@@ -44,5 +46,8 @@ export class ResetPasswordComponent implements OnInit {
       }
     })
     
+    
   }
+  
+  
 }

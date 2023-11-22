@@ -66,7 +66,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .bg-main{
-  background-color:#4AA35A ;
+  background-color:#4AA35A  !important;
+}
+.bgDark{
+  background-color:#1f384c !important ;
 }
 .bg-second{
   background-color: #3A3A3D;

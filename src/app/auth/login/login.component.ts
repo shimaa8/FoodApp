@@ -27,8 +27,7 @@ export class LoginComponent implements OnInit {
     this._AuthService.onlogin(data.value).subscribe({
       next:(res:any)=>{
         console.log(res);
-        this.Message=res.message;
-      
+       localStorage.setItem('userToken',res.token);      
         
        
         
@@ -38,6 +37,7 @@ export class LoginComponent implements OnInit {
 
         
       },complete:()=>{
+        this.router.navigate(['/dashboard'])
         this.toastr.success('Hello world!', 'Toastr fun!');
 
 
@@ -85,5 +85,4 @@ export class LoginComponent implements OnInit {
 
     
   }
-
 

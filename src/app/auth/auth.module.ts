@@ -6,14 +6,12 @@ import { LoginComponent } from './login/login.component';
 import { SheardModule } from '../sheard/sheard.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RequestResetPasswordComponent } from './request-reset-password/request-reset-password.component';
-import { AdminComponent } from '../admin/admin.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   
   {path:'login',component:LoginComponent},
   {path:'ResetPassword',component:ResetPasswordComponent},
-  {path:'admin',component:AdminComponent}
 
 ];
 
