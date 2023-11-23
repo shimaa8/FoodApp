@@ -23,22 +23,23 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(data:FormGroup){
-    console.log(data);
     this._AuthService.onlogin(data.value).subscribe({
       next:(res:any)=>{
         console.log(res);
+        
        localStorage.setItem('userToken',res.token);      
         
        
         
-      },error:(err:any)=>{
-        this.toastr.error('Hello world!', 'Toastr fun!');
+      },error:(err)=>{
+        
+        this.toastr.error(err.error.message, 'Toastr fun!');
 
 
         
       },complete:()=>{
         this.router.navigate(['/dashboard'])
-        this.toastr.success('Hello world!', 'Toastr fun!');
+        this.toastr.success(this.Message, 'Toastr fun!');
 
 
       }
@@ -76,7 +77,7 @@ export class LoginComponent implements OnInit {
       },
       complete:()=>{
         this.toastr.success(this.Message, 'Successfully!');
-        this.router.navigate(['auth/ResetPassword']);
+        this.router.navigate(['/auth/ResetPassword']);
         localStorage.setItem('email',data);
 
       }

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { RequestResetPasswordComponent } from '../request-reset-password/request-reset-password.component';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +22,7 @@ export class ResetPasswordComponent implements OnInit {
   })
   dialogRef: any;
 
-  constructor( private _AuthService:AuthService,private toastr: ToastrService) { }
+  constructor( private _AuthService:AuthService,private toastr: ToastrService,private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -29,7 +31,6 @@ export class ResetPasswordComponent implements OnInit {
     this._AuthService.onRestPassword(data.value).subscribe({
       next:(res:any)=>{
         console.log(res);
-      
         
        
         
@@ -48,6 +49,12 @@ export class ResetPasswordComponent implements OnInit {
     
     
   }
+    
+onClose(){
+  this.dialogRef.close();
+}
   
   
 }
+
+

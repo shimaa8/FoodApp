@@ -5,6 +5,7 @@ import { CategoriesComponent } from './categories.component';
 @NgModule({
   imports: [
     CommonModule
+    
   ],
   declarations: [CategoriesComponent]
 })

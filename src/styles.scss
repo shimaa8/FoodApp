@@ -78,7 +78,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 button{
   border: none;
   border-radius: 8px;
-  padding: 20px 15px;
+  padding: 10px 15px;
   &.primary{
     background-color: #4AA35A;
     color: #fff;
@@ -88,7 +88,7 @@ button{
   }
 
   &.outline-primary{
-    background-color: #4AA35A;
+    background-color:1px solid #4AA35A;
     color: #4AA35A;
     &:hover{
       opacity: 0.8;

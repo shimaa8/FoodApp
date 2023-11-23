@@ -8,14 +8,13 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class RequestResetPasswordComponent implements OnInit {
 email:string='';
-  dialogRef: any;
-  constructor(_dialogRef: MatDialogRef<RequestResetPasswordComponent>) { }
+  constructor(public dialogRef:MatDialogRef<RequestResetPasswordComponent>) { }
 
   ngOnInit() {
   }
   
-  onClose(){
-    this.dialogRef.close();
-  }
+onClose(){
+  this.dialogRef.close();
+}
   
 }

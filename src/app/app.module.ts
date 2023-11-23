@@ -11,12 +11,11 @@ import { SheardModule } from './sheard/sheard.module';
 import { AuthGuard } from './Guards/auth.guard';
 import { UserGuard } from './Guards/user.guard';
 import { AdminGuard } from './Guards/admin.guard';
-import { ChangePasswordComponent } from './change-password/change-password.component';
 
 
 @NgModule({
   declarations: [		
-    AppComponent, ChangePasswordComponent,
+    AppComponent, 
       
    ],
   imports: [

@@ -1,21 +1,25 @@
 <section id="login">
   <div class="container">
+    <div class="row">
+
     <div class="col-md-6 mx-auto">
        <div class="card-auth">
         <div class="text-center">
           <img src="../../../assets/images/logo.svg" class="w-50" alt="">
         </div>
-          <h2>Log In</h2>
+          <h2>Login</h2>
           <P>welcome Back!Please enter your details</P>
            <form [formGroup]="loginForm " (ngSubmit)="onSubmit(loginForm)">
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-mobile-screen"></i></span>
-              <input formControlName="email" type="text" class="form-control" placeholder="Enter your E-mail">
-
+              <input formControlName="email" type="text" class="form-control" placeholder="Enter your E-mail"
+              aria-label="Enter your Email" aria-describedby="basic-addon1">
             </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-              <input formControlName="password" type="password" class="form-control" placeholder="password">
+              <input formControlName="password" type="password" class="form-control" placeholder="password"
+              aria-label="password" aria-describedby="basic-addon1">
+
             <div *ngIf="loginForm.get('password')?.getError('required')"></div>
             </div>
           
@@ -31,5 +35,7 @@
        </div>
 
     </div>
+  </div>
+
   </div>
 </section>

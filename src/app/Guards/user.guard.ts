@@ -9,7 +9,7 @@ import { AuthService } from '../auth/services/auth.service';
 export class UserGuard implements CanActivate {
 
   constructor( private router: Router,private _AuthService:AuthService ) { 
-    _AuthService.getProfile()
+    this._AuthService.getProfile()
   }
   canActivate(
     next: ActivatedRouteSnapshot,
