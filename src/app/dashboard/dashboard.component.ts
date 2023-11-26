@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
+import { ChangepasswordComponent } from '../admin/changepassword/changepassword.component';
 
 interface IMenu{
   title:string,
@@ -79,6 +80,7 @@ menu:IMenu[]=[
   },
 ]
 
+
 logout(){
  localStorage.removeItem('role');
  localStorage.removeItem('token');
@@ -87,8 +89,14 @@ logout(){
 
 }
 
+openDialog(): void {
+  const dialogRef = this.dialog.open(ChangepasswordComponent, {
+    data: {},
+    width:'40%',
+    
+  });
 
 
 }
-
+}
 
