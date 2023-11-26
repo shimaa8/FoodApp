@@ -10,9 +10,7 @@
           
           <ng-container *ngFor="let item of menu">
             <a class="d-block text-decoration-none" [routerLink]="item.link" routerLinkActive="bg-active"
-            *ngIf="item.isActive"
-            >
-
+            *ngIf="item.isActive">
               <div class="item ">
                 <span><i [class]="item.icon"></i></span>
                 <span [ngClass]="{'d-flex':!isOpened}" class="mx-2">{{item.title}}</span>
@@ -23,8 +21,9 @@
         
           <div class="item ">
             <span><i class="fa-solid fa-lock-open"></i></span>
-            <span  onclick="openDialog()"  class="mx-2">Change Password</span>
+            <span    class="mx-2">changepassword</span>
           </div>
+          
           <div class="item " (click)="logout()">
             <span><i class="fa-solid fa-right-from-bracket"></i></span>
             <span class="mx-2">Logout</span>

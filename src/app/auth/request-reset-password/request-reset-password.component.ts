@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import {  MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-request-reset-password',
@@ -7,14 +7,17 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./request-reset-password.component.css']
 })
 export class RequestResetPasswordComponent implements OnInit {
+
+  
 email:string='';
   constructor(public dialogRef:MatDialogRef<RequestResetPasswordComponent>) { }
 
   ngOnInit() {
   }
-  
-onClose(){
+
+onNoclick(){
   this.dialogRef.close();
 }
+
   
 }

@@ -5,7 +5,11 @@ import { Observable } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 
 
-@Injectable()
+
+@Injectable({
+  providedIn  : 'root'
+})
+
 export class UserGuard implements CanActivate {
 
   constructor( private router: Router,private _AuthService:AuthService ) { 
@@ -15,7 +19,7 @@ export class UserGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-      if (localStorage.getItem('userToken')!==null && localStorage.getItem('role')=="SuperUser"){
+      if (localStorage.getItem('token')!==null && localStorage.getItem('role')=="SystemUser"){
     return true
   }
   else{

@@ -19,7 +19,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    SheardModule,
+    SheardModule
   ],
   declarations: [AuthComponent,LoginComponent,ResetPasswordComponent,RequestResetPasswordComponent],
 })

@@ -11,18 +11,21 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 import { HomeComponent } from './home/home.component';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 @NgModule({
   imports:[
     CommonModule,
     MatButtonModule, MatDividerModule
     ,MatIconModule,HttpClientModule,FormsModule
-    ,MatSidenavModule,ReactiveFormsModule
+    ,MatSidenavModule,ReactiveFormsModule,MatPaginatorModule
     ,MatDialogModule],
-  declarations: [SheardComponent, SidebarComponent, NavbarComponent, HomeComponent],
+  declarations: [SheardComponent, SidebarComponent, NavbarComponent, HomeComponent,DeleteDialogComponent],
 
   exports:[ MatButtonModule,SidebarComponent ,NavbarComponent
-    ,HomeComponent,MatDividerModule, MatIconModule,MatSidenavModule,HttpClientModule,ReactiveFormsModule,MatDialogModule,FormsModule
+    ,HomeComponent,MatDividerModule, MatIconModule,MatSidenavModule,HttpClientModule,DeleteDialogComponent,MatPaginatorModule,ReactiveFormsModule,MatDialogModule,FormsModule
   ]
 })
 export class SheardModule { }

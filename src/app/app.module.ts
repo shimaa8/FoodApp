@@ -8,9 +8,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { GlobalInterceptor } from './Interceptor/global.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { SheardModule } from './sheard/sheard.module';
-import { AuthGuard } from './Guards/auth.guard';
-import { UserGuard } from './Guards/user.guard';
-import { AdminGuard } from './Guards/admin.guard';
 
 
 @NgModule({
@@ -32,7 +29,7 @@ import { AdminGuard } from './Guards/admin.guard';
     }),
 
   ],
-  providers: [AuthGuard,UserGuard,AdminGuard,
+  providers: [
     {
       provide:HTTP_INTERCEPTORS,
       useClass:GlobalInterceptor,

@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RecipesComponent } from './recipes.component';
+import { ChangepasswordComponent } from './changepassword.component';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes:Routes=[
   {
-    path:'',component:RecipesComponent
+    path:'',component:ChangepasswordComponent
   }
 ]
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes)
+
   ],
-  declarations: [RecipesComponent]
+  declarations: [ChangepasswordComponent]
 })
-export class RecipesModule { }
+export class ChangepasswordModule { }

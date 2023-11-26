@@ -27,19 +27,19 @@ export class LoginComponent implements OnInit {
       next:(res:any)=>{
         console.log(res);
         
-       localStorage.setItem('userToken',res.token);      
-        
+       localStorage.setItem('token',res.token);      
+        this._AuthService.getProfile();
        
         
       },error:(err)=>{
         
-        this.toastr.error(err.error.message, 'Toastr fun!');
+        this.toastr.error(err.error.message, ' successfully!');
 
 
         
       },complete:()=>{
         this.router.navigate(['/dashboard'])
-        this.toastr.success(this.Message, 'Toastr fun!');
+        this.toastr.success(this.Message, 'successfully!');
 
 
       }

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { RequestResetPasswordComponent } from '../request-reset-password/request-reset-password.component';
+import { LoginComponent } from '../login/login.component';
+import {  MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-reset-password',
@@ -11,6 +11,7 @@ import { RequestResetPasswordComponent } from '../request-reset-password/request
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
+  email:string=''
   hide:boolean=true;
   userEmail=localStorage.getItem('email');
   ResetForm=new FormGroup({
@@ -20,9 +21,8 @@ export class ResetPasswordComponent implements OnInit {
     seed:new FormControl(null,[Validators.required]),
 
   })
-  dialogRef: any;
 
-  constructor( private _AuthService:AuthService,private toastr: ToastrService,private dialog: MatDialog) { }
+  constructor( private _AuthService:AuthService,private toastr: ToastrService,public dialogRef:MatDialogRef<LoginComponent>) { }
 
   ngOnInit() {
   }
@@ -50,11 +50,12 @@ export class ResetPasswordComponent implements OnInit {
     
   }
     
-onClose(){
-  this.dialogRef.close();
-}
+
   
-  
+  onNoclick(){
+    this.dialogRef.close();
+  }
+   
 }
 
 

@@ -9,7 +9,7 @@ HttpClient
 export class AuthService {
 role:string|null='';
 constructor(private _HttpClient:HttpClient) {
-  if(localStorage.getItem('userToken')!==null){
+  if(localStorage.getItem('token')!==null){
     this.getProfile();
   }
  }
@@ -29,7 +29,7 @@ onRestPassword(data:string){
 }
 
 getProfile(){
- let enecode:any= localStorage.getItem('userToken');
+ let enecode:any= localStorage.getItem('token');
  let decode:any=jwtDecode(enecode);
  console.log(decode.userGroup);
  console.log(decode.userName);

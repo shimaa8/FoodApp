@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
-import { ChangePasswordComponent } from '../change-password/change-password.component';
 import { MatDialog } from '@angular/material/dialog';
 
 interface IMenu{
@@ -72,29 +71,24 @@ menu:IMenu[]=[
     link:'/dashboard/admin/categories',
     isActive:this.isUser()
   },
+  {
+    title:'favoriets',
+    icon:'fa-solid fa-calendar-days',
+    link:'/dashboard/admin/categories',
+    isActive:this.isAdmin()
+  },
 ]
 
 logout(){
  localStorage.removeItem('role');
- localStorage.removeItem('userToken');
+ localStorage.removeItem('token');
  localStorage.removeItem('userName');
  this.router.navigate(['/auth'])
 
 }
 
 
-openDialog(): void {
-  const dialogRef = this.dialog.open(ChangePasswordComponent, {
-    data: {},
-    width:'40%'
-  });
-
-  dialogRef.afterClosed().subscribe((result: any) => {
-    console.log('The dialog was closed');
-    console.log(result);
-    
-  });
-}
-
 
 }
+
+

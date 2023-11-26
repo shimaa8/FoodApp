@@ -4,7 +4,11 @@ import {Router,CanActivate,ActivatedRouteSnapshot,RouterStateSnapshot
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/services/auth.service';
 
-@Injectable()
+
+@Injectable({
+  providedIn  : 'root'
+})
+
 export class AdminGuard implements CanActivate {
 
   constructor( private router: Router,_AuthService:AuthService ) {
@@ -15,7 +19,7 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-     if (localStorage.getItem('userToken')!==null && localStorage.getItem('role')=="SuperAdmin"){
+     if (localStorage.getItem('token')!==null && localStorage.getItem('role')=="SuperAdmin"){
     return true
   }
   else{
