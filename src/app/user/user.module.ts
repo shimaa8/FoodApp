@@ -7,6 +7,10 @@ import { SheardModule } from '../sheard/sheard.module';
 
 const routes:Routes=[
   {path:'users',component:UserComponent},
+  {path: 'recipes',loadChildren: () => import('./modules/user-recipes/user-recipes.module').then(m => m.UserRecipesModule)},
+  {path: 'favorites',loadChildren: () => import('./modules/favorites/favorites.module').then(m => m.FavoritesModule)}, 
+ 
+
 ]
 
 @NgModule({

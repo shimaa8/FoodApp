@@ -16,5 +16,9 @@ AddCategory(data:any):Observable<any>{
   return this._HttpClient.post('Category',{name:data})
 
 }
+deletCategory(id:number):Observable<any>{
+  return this._HttpClient.delete(`Category/${id}`)
+
+}
 
 }

@@ -6,16 +6,16 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './delete-dialog.component.html',
   styleUrls: ['./delete-dialog.component.css']
 })
-export class DeleteDialogComponent implements OnInit {
+export class DeleteDialogComponent implements OnInit  {
 
   constructor(private dialogRef:MatDialogRef<DeleteDialogComponent>, 
-       @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+       @Inject(MAT_DIALOG_DATA) public data: any, ) { }
 
-  ngOnInit() {
-  }
-onclose(){
+
+onNoClick():void{
   this.dialogRef.close();
 }
-
+ngOnInit(): void {
+  
+}
 }

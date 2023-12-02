@@ -63,21 +63,16 @@ menu:IMenu[]=[
   {
     title:'User Recipes',
     icon:'fa-solid fa-calendar-days',
-    link:'/dashboard/admin/categories',
+    link:'/dashboard/user/recipes',
     isActive:this.isUser()
   },
   {
     title:'favoriets',
     icon:'fa-solid fa-calendar-days',
-    link:'/dashboard/admin/categories',
+    link:'/dashboard/user/favorites',
     isActive:this.isUser()
   },
-  {
-    title:'favoriets',
-    icon:'fa-solid fa-calendar-days',
-    link:'/dashboard/admin/categories',
-    isActive:this.isAdmin()
-  },
+  
 ]
 
 

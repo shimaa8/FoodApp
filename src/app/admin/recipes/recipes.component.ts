@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, Optional } from '@angular/core';
+import { IRecipe, IRecipeTable, ITag } from './models/recipe';
+import { RecipeService } from './services/recipe.service';
+import { CategoryService } from '../categories/services/category.service';
+import { HelperService } from 'src/app/services/helper.service';
 
 @Component({
   selector: 'app-recipes',
@@ -7,9 +11,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecipesComponent implements OnInit {
 
-  constructor() { }
+  searchValue:string=''
+  pageSize:number=20;
+  pageNumber:number|undefined=1;
+  TableResponse:IRecipeTable|undefined;
+  TableData:IRecipe[]=[];
+  tagId:any;
+  RecipeData:any;
+  tags:ITag[]=[];
+data: any;
+
+  constructor(private _RecipeService:RecipeService,private _HelperService:HelperService
+     ) { }
 
   ngOnInit() {
+    this.getAllTags();
+    this.gettableData()
   }
+  gettableData(){
+    let parms=
+      {
+        pageSize:this.pageSize,
+        PageNumber: this.pageNumber,
+        name:this.searchValue,
+       tagId: this.tagId
+      }
+    
+    this._RecipeService.getRecipes(parms).subscribe({
+    next:(res:IRecipeTable)=>{
+         this.TableResponse=res; 
+         this.TableData=this.TableResponse?.data;   
+         console.log(this.TableData?.length);
+         
+    }    
+    })
+  
+  }
+getAllTags(){
+  this._HelperService.getTags().subscribe({
+  next:(res)=>{
+    console.log(res);
+    this.tags=res;
+  }
+  })
+  
+}
+
+
+
+
 
 }
+
+
+

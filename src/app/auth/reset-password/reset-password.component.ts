@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../services/auth.service';
-import { LoginComponent } from '../login/login.component';
 import {  MatDialogRef } from '@angular/material/dialog';
+import { RequestResetPasswordComponent } from '../request-reset-password/request-reset-password.component';
 
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  styleUrls: ['./reset-password.component.css'],
+
 })
 export class ResetPasswordComponent implements OnInit {
   email:string=''
@@ -22,7 +23,7 @@ export class ResetPasswordComponent implements OnInit {
 
   })
 
-  constructor( private _AuthService:AuthService,private toastr: ToastrService,public dialogRef:MatDialogRef<LoginComponent>) { }
+  constructor( private _AuthService:AuthService,private toastr: ToastrService, @Optional() public dialogRef:MatDialogRef<RequestResetPasswordComponent>) { }
 
   ngOnInit() {
   }

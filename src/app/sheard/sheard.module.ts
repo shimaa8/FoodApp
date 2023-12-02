@@ -12,20 +12,21 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
-
+import { NgxDropzoneModule } from 'ngx-dropzone';
 import { HomeComponent } from './home/home.component';
 import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+
 @NgModule({
   imports:[
     CommonModule,
     MatButtonModule, MatDividerModule
     ,MatIconModule,HttpClientModule,FormsModule
-    ,MatSidenavModule,ReactiveFormsModule,MatPaginatorModule
+    ,MatSidenavModule,ReactiveFormsModule,MatPaginatorModule,NgxDropzoneModule
     ,MatDialogModule],
   declarations: [SheardComponent, SidebarComponent, NavbarComponent, HomeComponent,DeleteDialogComponent],
 
   exports:[ MatButtonModule,SidebarComponent ,NavbarComponent
-    ,HomeComponent,MatDividerModule, MatIconModule,MatSidenavModule,HttpClientModule,DeleteDialogComponent,MatPaginatorModule,ReactiveFormsModule,MatDialogModule,FormsModule
+    ,HomeComponent,MatDividerModule, MatIconModule,MatSidenavModule,NgxDropzoneModule,HttpClientModule,DeleteDialogComponent,MatPaginatorModule,ReactiveFormsModule,MatDialogModule,FormsModule
   ]
 })
 export class SheardModule { }

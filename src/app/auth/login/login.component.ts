@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
    Message:string='';
@@ -27,18 +27,21 @@ export class LoginComponent implements OnInit {
       next:(res:any)=>{
         console.log(res);
         
+         this.Message=res.message;        
        localStorage.setItem('token',res.token);      
         this._AuthService.getProfile();
        
         
       },error:(err)=>{
         
-        this.toastr.error(err.error.message, ' successfully!');
+        this.toastr.error(err.error.message, ' Error!');
 
 
         
       },complete:()=>{
         this.router.navigate(['/dashboard'])
+       // console.log(this.Message);
+        
         this.toastr.success(this.Message, 'successfully!');
 
 
@@ -65,9 +68,8 @@ export class LoginComponent implements OnInit {
       
        
     this._AuthService.onRequestRestPassword(data).subscribe({
-      next:(res:any)=>{
-           console.log(res.message);
-           this.Message=res.message;
+      next:(res)=>{
+           console.log(res);
            
       },
       error:(err)=>{

@@ -17,9 +17,7 @@ constructor(private _HttpClient:HttpClient) {
 onlogin(data:ILogin){
   return this._HttpClient.post('Users/Login',data)
 }
-// onadmin(data:string){
-//   return this._HttpClient.post('auth/admin',data)
-// }
+
 onRequestRestPassword(data:string){
   return this._HttpClient.post('Users/Reset/Request',{email:data})
 }
@@ -28,6 +26,9 @@ onRestPassword(data:string){
   return this._HttpClient.post('Users/Reset',data)
 }
 
+onChangePassword(data:string){
+  return this._HttpClient.put('Users/ChangePassword',data);
+}
 getProfile(){
  let enecode:any= localStorage.getItem('token');
  let decode:any=jwtDecode(enecode);
