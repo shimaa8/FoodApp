@@ -25,25 +25,5 @@ export class ChangepasswordComponent implements OnInit {
     
   }
 
-  onResetRequest(data:string){
-      
-       
-    this._AuthService.onChangePassword(data).subscribe({
-      next:(res)=>{
-           console.log(res);
-           
-      },
-      error:(err)=>{
-        this.toastr.error(err.error.message, ' Error');
-
-        
-      },
-      complete:()=>{
-        this.toastr.success(this.Message, ' change password Successfully!');
-       
-
-      }
  
-    })
-  }
 }  

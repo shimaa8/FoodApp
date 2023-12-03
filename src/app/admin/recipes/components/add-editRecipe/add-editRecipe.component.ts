@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { IRecipe, ITag } from './../../models/recipe';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -12,6 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-editRecipe.component.css']
 })
 export class AddEditRecipeComponent implements OnInit {
+  Message:string=''
   imgSrc:any;
   tags:ITag[]=[];
   Categories:ICategory[]=[];
@@ -26,7 +28,7 @@ RecipeForm=new FormGroup({
   categoriesIds:new FormControl(null),
 
 })
-  constructor( private _HelperService:HelperService,private _RecipeService:RecipeService,private _ActivatedRoute:ActivatedRoute,private router:Router) { 
+  constructor( private _HelperService:HelperService,private _RecipeService:RecipeService,private _ActivatedRoute:ActivatedRoute,private router:Router,private toastr:ToastrService) { 
  this.recipeId=_ActivatedRoute.snapshot.params['id'];
  if(this.recipeId){
   this.isUpdatedPage=true;
@@ -98,7 +100,9 @@ onSubmit(data:FormGroup){
     },complete:()=>{
     
     
-      this.router.navigate(['/dashboard/admin/recipes'])
+      this.router.navigate(['/dashboard/admin/recipes']);
+      this.toastr.success(this.Message, 'successfully!');
+
     }
   })
 }

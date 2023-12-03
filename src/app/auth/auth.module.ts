@@ -6,12 +6,16 @@ import { LoginComponent } from './login/login.component';
 import { SheardModule } from '../sheard/sheard.module';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { RequestResetPasswordComponent } from './request-reset-password/request-reset-password.component';
+import { RegisterComponent } from './register/register.component';
+import { VerifyComponent } from './verify/verify.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login',pathMatch:'full'},
   
   {path:'login',component:LoginComponent},
   {path:'ResetPassword',component:ResetPasswordComponent},
+  {path:'register',component:RegisterComponent},
+
 
 ];
 
@@ -21,6 +25,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SheardModule
   ],
-  declarations: [AuthComponent,LoginComponent,ResetPasswordComponent,RequestResetPasswordComponent],
+  declarations: [AuthComponent,LoginComponent,ResetPasswordComponent,RequestResetPasswordComponent,RegisterComponent,VerifyComponent],
 })
 export class AuthModule { }

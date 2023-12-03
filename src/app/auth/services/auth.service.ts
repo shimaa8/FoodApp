@@ -17,7 +17,12 @@ constructor(private _HttpClient:HttpClient) {
 onlogin(data:ILogin){
   return this._HttpClient.post('Users/Login',data)
 }
-
+onRegister(data:any){
+  return this._HttpClient.post('Users/Register',data)
+}
+onVerifyAccount(data:any){
+  return this._HttpClient.put('Users/verify',data)
+}
 onRequestRestPassword(data:string){
   return this._HttpClient.post('Users/Reset/Request',{email:data})
 }

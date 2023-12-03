@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Optional } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { IRecipe, IRecipeTable, ITag } from './models/recipe';
 import { RecipeService } from './services/recipe.service';
 import { CategoryService } from '../categories/services/category.service';
@@ -26,7 +26,7 @@ data: any;
 
   ngOnInit() {
     this.getAllTags();
-    this.gettableData()
+    this.gettableData();
   }
   gettableData(){
     let parms=
@@ -38,8 +38,8 @@ data: any;
       }
     
     this._RecipeService.getRecipes(parms).subscribe({
-    next:(res:IRecipeTable)=>{
-         this.TableResponse=res; 
+    next:(data:IRecipeTable)=>{
+         this.TableResponse=data; 
          this.TableData=this.TableResponse?.data;   
          console.log(this.TableData?.length);
          

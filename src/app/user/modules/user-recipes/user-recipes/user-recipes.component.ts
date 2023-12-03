@@ -1,9 +1,11 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IRecipeTable, IRecipe, ITag } from 'src/app/admin/recipes/models/recipe';
 import { RecipeService } from 'src/app/admin/recipes/services/recipe.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { RecipeDataComponent } from '../recipe-data/recipe-data.component';
+import { FavoritesService } from '../../favorites/services/favorites.service';
 
 @Component({
   selector: 'app-user-recipes',
@@ -21,7 +23,7 @@ export class UserRecipesComponent implements OnInit {
   tags:ITag[]=[];
 data: any;
 
-  constructor(private _RecipeService:RecipeService,private _HelperService:HelperService,public dialog: MatDialog
+  constructor(private _ToastrService:ToastrService,private _FavoritesService:FavoritesService, private _RecipeService:RecipeService,private _HelperService:HelperService,public dialog: MatDialog
      ) { }
 
   ngOnInit() {
@@ -31,14 +33,37 @@ data: any;
 
 
   openDialog(reipeItem:IRecipe) {
-    this.dialog.open(RecipeDataComponent, {
+   const dialogRef= this.dialog.open(RecipeDataComponent, {
       data: reipeItem,
       width:'40%'
+      
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      if(result){
+        console.log(result);
+        this.addToFav(result);
+
+      }
       
     });
 
   }
 
+  addToFav(id:number){
+    this._FavoritesService.onAddtoFav(id).subscribe({
+      next:(res)=>{
+       console.log(res);
+       
+      },error:(err)=>{
+        console.log(err);
+        
+      },complete:()=>{
+          this._ToastrService.success('Added to Your Favorite','Success')
+      }
+    })
+
+  }
   gettableData(){
     let parms=
       {

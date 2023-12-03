@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
@@ -17,9 +18,10 @@ interface IMenu{
 })
 export class DashboardComponent implements OnInit {
   isOpened:boolean=true;
+  toastr: any;
   
 
-  constructor( private  _AuthService:AuthService,private router:Router,private dialog: MatDialog) {
+  constructor( private  _AuthService:AuthService,private router:Router,private dialog: MatDialog,private tostar: ToastrService) {
 
 
 
@@ -75,6 +77,27 @@ menu:IMenu[]=[
   
 ]
 
+onchangePassword(data:string){
+      
+       
+  this._AuthService.onChangePassword(data).subscribe({
+    next:(res)=>{
+         console.log(res);
+         
+    },
+    error:(err)=>{
+      this.toastr.error('error', ' Error');
+
+      
+    },
+    complete:()=>{
+      this.toastr.success( ' change password Successfully!','success');
+     
+
+    }
+
+  })
+}
 
 logout(){
  localStorage.removeItem('role');

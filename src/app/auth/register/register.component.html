@@ -1,0 +1,118 @@
+<section id="register">
+  <div class="container">
+    <div class="row">
+
+    <div class="col-md-10 mx-auto">
+       <div class="card-auth">
+        <div class="text-center">
+          <!-- <img src="../../../assets/images/logo.svg" class="w-50" alt=""> -->
+        </div>
+          <h2 class="h5">Register</h2>
+          <P>welcome Back!Please enter your details</P>
+           <form [formGroup]="registerForm " (ngSubmit)="onSubmit(registerForm)">
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-user"></i></span>
+                  <input formControlName="userName" type="text" class="form-control" placeholder="Enter your userName"
+                  aria-label="Enter your userName" aria-describedby="basic-addon1">
+                 
+    
+                </div>
+                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.userName.errors && registerForm.controls.userName.touched">
+                <p>userName is required</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-mobile-screen"></i></span>
+                  <input formControlName="email" type="text" class="form-control" placeholder="Enter your E-mail"
+                  aria-label="Enter your Email" aria-describedby="basic-addon1">
+                 
+    
+                </div>
+                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.email.errors && registerForm.controls.email.touched">
+                <p>Email is required</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-flag"></i></span>
+                  <input formControlName="country" type="text" class="form-control" placeholder="country"
+                  aria-label="country" aria-describedby="basic-addon1">
+                 
+    
+                </div>
+                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.country.errors && registerForm.controls.country.touched">
+                <p>country is required</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-phone"></i></span>
+                  <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Phone Number"
+                  aria-label="phoneNumber" aria-describedby="basic-addon1">
+                 
+    
+                </div>
+                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.phoneNumber.errors && registerForm.controls.phoneNumber.touched">
+                <p>phoneNumber is required</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                  <input formControlName="password" type="password" class="form-control" placeholder="password"
+                  aria-label="password" aria-describedby="basic-addon1">
+                  
+                </div>
+                <div class="alert alert-danger py-2" *ngIf="registerForm.controls.password.errors&&registerForm.controls.password.touched">
+                  <p>password must have A ,a @%@$# from 8,16</p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
+                  <input formControlName="confirmPassword" type="password" class="form-control" placeholder="confirmPassword"
+                  aria-label="confirmPassword" aria-describedby="basic-addon1">
+                  
+                </div>
+                <div class="alert alert-danger py-2" *ngIf="registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.touched">
+                  <p>password must have A ,a @%@$# from 8,16</p>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
+                  <i class="fa-solid fa-arrow-up-from-bracket d-block "></i>
+                  <ngx-dropzone-label *ngIf="!imgSrc">Drag & Drop or <span class="text-main">choose  a Item Image </span>to Upload</ngx-dropzone-label>
+                  
+                
+        
+                  <ngx-dropzone-label *ngIf="imgSrc">
+                    <img [src]="imgSrc" class="w-25" alt="">
+                    </ngx-dropzone-label>
+                    <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
+                    </ngx-dropzone-image-preview>  
+                </ngx-dropzone>
+              </div>
+            </div>
+        
+           
+          
+            <div class="d-flex justify-content-between my-2">
+              <a routerLink="/auth/login"  class="second-main text-decoration-none">Login Now?</a>
+              <a (click)="openDialog()" class="text-main text-decoration-none">Have  code?</a>
+              
+            </div>
+            <button   class="btn bg-main text-white w-100" >Register</button>
+         
+           </form>
+         
+       </div>
+
+    </div>
+  </div>
+
+  </div>
+</section>
