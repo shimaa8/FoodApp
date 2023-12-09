@@ -14,18 +14,23 @@
               <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-mobile-screen"></i></span>
               <input formControlName="email" type="text" class="form-control" placeholder="Enter your E-mail"
               aria-label="Enter your Email" aria-describedby="basic-addon1">
-         
-
             </div>
-            <div  class="alert alert-danger py-2"  *ngIf="loginForm.controls.email.errors && loginForm.controls.email.touched">
-              <p>Email is required</p>
-              </div>
+            <div class="alert alert-danger my-2" *ngIf="loginForm.get('email')?.errors && loginForm.get('email')?.touched">
+              <p *ngIf="loginForm.get('email')?.errors?.['required']" class="mb-0">
+                email is required
+              </p>
+                </div>
             <div class="input-group mb-3">
               <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
               <input formControlName="password" type="password" class="form-control" placeholder="password"
               aria-label="password" aria-describedby="basic-addon1">
             
             </div>
+            <div class="alert alert-danger my-2" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
+              <p *ngIf="loginForm.get('password')?.errors?.['required']" class="mb-0">
+                password is required
+              </p>
+                </div>
             <div class="alert alert-danger my-2" *ngIf="loginForm.get('code')?.errors && loginForm.get('code')?.touched">
               <p *ngIf="loginForm.get('code')?.errors?.['required']" class="mb-0">
               code is required

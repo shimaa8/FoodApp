@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
    Message:string='';
   loginForm=new FormGroup({
     email:new FormControl(null,[Validators.required,Validators.email]),
-    password:new FormControl(null,[Validators.required,Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
+    password:new FormControl(null,[Validators.required,Validators.pattern( '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$')]),
   })
   constructor( private _AuthService:AuthService,private toastr: ToastrService,private dialog: MatDialog,private router:Router) { }
 
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      this.onResetRequest(result);
+     // this.onResetRequest(result);
       
     });
   }

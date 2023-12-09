@@ -14,14 +14,26 @@ import { RequestResetPasswordComponent } from '../request-reset-password/request
 export class ResetPasswordComponent implements OnInit {
   email:string=''
   hide:boolean=true;
+  hideConfirm:boolean=true
+
   userEmail=localStorage.getItem('email');
   ResetForm=new FormGroup({
     email:new FormControl(this.userEmail,[Validators.required,Validators.email]),
-    password:new FormControl(null,[Validators.required,Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
-    confirmPassword:new FormControl(null,[Validators.required,Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
+    password: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+      ),
+    ]),
+    confirmPassword: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+      ),
+    ]),
     seed:new FormControl(null,[Validators.required]),
 
-  })
+  });
 
   constructor( private _AuthService:AuthService,private toastr: ToastrService, @Optional() public dialogRef:MatDialogRef<RequestResetPasswordComponent>) { }
 

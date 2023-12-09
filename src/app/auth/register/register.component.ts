@@ -61,11 +61,11 @@ export class RegisterComponent implements OnInit {
       console.log(data.value[key]);
       
       mydata.append(key,data.value[key]);
-      mydata.append('profileImage',this.imgSrc,this.imgSrc.name);
       
     }
     
-    
+    mydata.append('profileImage',this.imgSrc,this.imgSrc.name);
+
     this._AuthService.onRegister(mydata).subscribe({
       next:(res:any)=>{
         console.log(res);
