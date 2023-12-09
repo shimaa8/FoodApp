@@ -1,7 +1,6 @@
 import { Component, OnInit} from '@angular/core';
 import { IRecipe, IRecipeTable, ITag } from './models/recipe';
 import { RecipeService } from './services/recipe.service';
-import { CategoryService } from '../categories/services/category.service';
 import { HelperService } from 'src/app/services/helper.service';
 
 @Component({

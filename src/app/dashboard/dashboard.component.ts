@@ -77,27 +77,7 @@ menu:IMenu[]=[
   
 ]
 
-onchangePassword(data:string){
-      
-       
-  this._AuthService.onChangePassword(data).subscribe({
-    next:(res)=>{
-         console.log(res);
-         
-    },
-    error:(err)=>{
-      this.toastr.error('error', ' Error');
 
-      
-    },
-    complete:()=>{
-      this.toastr.success( ' change password Successfully!','success');
-     
-
-    }
-
-  })
-}
 
 logout(){
  localStorage.removeItem('role');
@@ -114,7 +94,14 @@ openDialog(): void {
     
   });
 
-
+  dialogRef.afterClosed().subscribe((result ) => {
+    if (result) {
+      localStorage.removeItem('userToken');
+      localStorage.removeItem('role');
+      localStorage.removeItem('userName');
+      this.router.navigate(['/auth']);
+    }
+  });
 }
 }
 

@@ -6,6 +6,9 @@ import { AddEditCategoryComponent } from './components/Add-Edit-category/Add-Edi
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DeleteDialogComponent } from 'src/app/sheard/delete-dialog/delete-dialog.component';
+import { HelperService } from 'src/app/services/helper.service';
+import { ITag } from '../recipes/models/recipe';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -16,13 +19,16 @@ import { DeleteDialogComponent } from 'src/app/sheard/delete-dialog/delete-dialo
 export class CategoriesComponent implements OnInit {
   searchValue:string=''
   pageSize:number=20;
+  isUpdatedpage:boolean=false;
   pageNumber:number|undefined=1;
   TableResponse:ICategoryTable|undefined;
   TableData:ICategory[]|undefined=[];
-  constructor(private _CategoryService:CategoryService,private dialog:MatDialog,private ToastrService:ToastrService ) { }
+
+
+  constructor(private _CategoryService:CategoryService,private dialog:MatDialog,private ToastrService:ToastrService,private _HelperService:HelperService ) {
+  }
 
   ngOnInit() {
-    
     this.gettableData();
   }
   
@@ -31,7 +37,8 @@ gettableData(){
     {
       pageSize:this.pageSize,
       PageNumber: this.pageNumber,
-      name:this.searchValue
+      name:this.searchValue,
+
     }
   
   this._CategoryService.getCategories(parms).subscribe({
@@ -44,6 +51,7 @@ gettableData(){
  
  
 }
+
 handlePageEvent(e: PageEvent) {
   console.log(e);
   
@@ -126,7 +134,6 @@ openAddDialog(): void {
   });
   
 }
-
 
 
 }

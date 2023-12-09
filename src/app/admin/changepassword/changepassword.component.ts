@@ -1,29 +1,76 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/auth/services/auth.service';
-
 @Component({
   selector: 'app-changepassword',
   templateUrl: './changepassword.component.html',
   styleUrls: ['./changepassword.component.scss']
 })
-export class ChangepasswordComponent implements OnInit {
+export class ChangepasswordComponent  {
   Message:string=''
+  hideConfirm:boolean=true
   hide:boolean=true
-  changepassword=new FormGroup({
-    OldPassword:new FormControl(null,[Validators.required,Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
-    NewPassword:new FormControl(null,[Validators.required,Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
-    confirmNewPassword:new FormControl(null,[Validators.required,Validators.pattern('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
-  })
+  useremail=localStorage.getItem('email');
+  userEmail = localStorage.getItem('email');
+  changePasswordForm = new FormGroup({
+    oldPassword: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+      ),
+    ]),
+    newPassword: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+      ),
+    ]),
+    confirmNewPassword: new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+      ),
+    ]),
+  });
   constructor(private _AuthService:AuthService,private  toastr: ToastrService) { }
 
-  ngOnInit() {
-  }
+
+  
+  // matchpassword(form:any){
+  //   let NewPassword=form.get('NewPassword');
+  //   let confirmNewPassword =form.get('confirmNewPassword');
+  //   if(NewPassword.value==confirmNewPassword.value){
+  //     return null;
+  //   }else{
+  //     confirmNewPassword.setErrors({invalid:'pass w repass  not match'});
+  //     return {invalid:'pass w repass'};
+  //   }
+  // }
+
   onSubmit(data:FormGroup){
     console.log(data);
+   // this.matchpassword(data);           
+   return  this._AuthService.onChangePassword(data.value).subscribe({
+        next:(res)=>{
+             console.log(res);
+             
+        },
+        error:(err)=>{
+          this.toastr.error('error', ' Error');
+    
+          
+        },
+        complete:()=>{
+          this.toastr.success( ' change password Successfully!','success');
+         
+    
+        }
+    
+      })
+    }
     
   }
 
  
-}  
+  

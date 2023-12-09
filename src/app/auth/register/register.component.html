@@ -20,9 +20,7 @@
                  
     
                 </div>
-                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.userName.errors && registerForm.controls.userName.touched">
-                <p>userName is required</p>
-                </div>
+              
               </div>
               <div class="col-md-6">
                 <div class="input-group mb-3">
@@ -32,9 +30,7 @@
                  
     
                 </div>
-                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.email.errors && registerForm.controls.email.touched">
-                <p>Email is required</p>
-                </div>
+                
               </div>
               <div class="col-md-6">
                 <div class="input-group mb-3">
@@ -44,51 +40,67 @@
                  
     
                 </div>
-                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.country.errors && registerForm.controls.country.touched">
-                <p>country is required</p>
-                </div>
+               
               </div>
               <div class="col-md-6">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-phone"></i></span>
                   <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Phone Number"
+                 
                   aria-label="phoneNumber" aria-describedby="basic-addon1">
                  
     
                 </div>
-                <div  class="alert alert-danger py-2"  *ngIf="registerForm.controls.phoneNumber.errors && registerForm.controls.phoneNumber.touched">
-                <p>phoneNumber is required</p>
-                </div>
+               
               </div>
               <div class="col-md-6">
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                  <input formControlName="password" type="password" class="form-control" placeholder="password"
-                  aria-label="password" aria-describedby="basic-addon1">
-                  
-                </div>
-                <div class="alert alert-danger py-2" *ngIf="registerForm.controls.password.errors&&registerForm.controls.password.touched">
-                  <p>password must have A ,a @%@$# from 8,16</p>
+                <div class="position-relative">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text">
+                      <i class="fa-solid fa-lock"></i
+                    ></span>
+                    <input
+                      formControlName="password"
+                      [type]="hide ? 'password' : 'text'"
+                      class="form-control"
+                      placeholder="Old Password"
+                    />
+                    <span class="input-group-text eye-icon" (click)="hide = !hide">
+                      <i class="fa-solid" [class]="hide ? 'fa-eye-slash' : 'fa-eye'"></i>
+                    </span>
+                  </div>
                 </div>
               </div>
+            
               <div class="col-md-6">
-                <div class="input-group mb-3">
-                  <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-lock"></i></span>
-                  <input formControlName="confirmPassword" type="password" class="form-control" placeholder="confirmPassword"
-                  aria-label="confirmPassword" aria-describedby="basic-addon1">
-                  
+                <div class="position-relative">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="fa-solid fa-lock"></i></span>
+                    <input
+                      formControlName="confirmPassword"
+                      [type]="hideConfirm ? 'password' : 'text'"
+                      class="form-control"
+                      placeholder="New Password"
+                    />
+                    <span
+                      class="input-group-text eye-icon"
+                      (click)="hideConfirm = !hideConfirm"
+                    >
+                      <i
+                        class="fa-solid"
+                        [class]="hideConfirm ? 'fa-eye-slash' : 'fa-eye'"
+                      ></i>
+                    </span>
+                  </div>
                 </div>
-                <div class="alert alert-danger py-2" *ngIf="registerForm.controls.confirmPassword.errors&&registerForm.controls.confirmPassword.touched">
-                  <p>password must have A ,a @%@$# from 8,16</p>
-                </div>
+         
               </div>
-              <div class="col-md-12">
+              <div class="col-md-12 text-center">
                 <ngx-dropzone (change)="onSelect($event)" [multiple]="false">
-                  <i class="fa-solid fa-arrow-up-from-bracket d-block "></i>
-                  <ngx-dropzone-label *ngIf="!imgSrc">Drag & Drop or <span class="text-main">choose  a Item Image </span>to Upload</ngx-dropzone-label>
+                  <ngx-dropzone-label *ngIf="!imgSrc">
+                    <i class="fa-solid fa-arrow-up-from-bracket d-block "></i>
+                    Drag & Drop or <span class="text-main">choose  a Item Image </span>to Upload</ngx-dropzone-label>
                   
-                
-        
                   <ngx-dropzone-label *ngIf="imgSrc">
                     <img [src]="imgSrc" class="w-25" alt="">
                     </ngx-dropzone-label>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -13,19 +13,41 @@ import { VerifyComponent } from '../verify/verify.component';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  imgSrc:any
+  imgSrc:any;
+  hide:boolean=true;
+  hideConfirm:boolean=true
   Message:string='';
   registerForm=new FormGroup({
     userName:new FormControl(null,[Validators.required]),
     email:new FormControl(null,[Validators.required,Validators.email]),
     country:new FormControl(null,[Validators.required]),
-    phoneNumber:new FormControl(null,[Validators.required]),
-    profileImage:new FormControl(null),
-    password:new FormControl(null,[Validators.required]),
-    confirmPassword:new FormControl(null,[Validators.required]),
-  })
+    phoneNumber:new FormControl(null,[Validators.required,Validators.pattern('^01[0-2,5]{1}[0-9]{8}$')]),
+    profileImage:new FormControl(null,[Validators.required]),
+    password:new FormControl(null, new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+      ),
+    ]),),
+    confirmPassword:new FormControl(null, new FormControl(null, [
+      Validators.required,
+      Validators.pattern(
+        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+      ),
+    ]),),
+  },{validators:this.matchpasswords})
   constructor( private _AuthService:AuthService,private toastr: ToastrService,private dialog: MatDialog,private router:Router) { }
 
+  matchpasswords(form:any){
+    let pass=form.get('password');
+    let confirmpass=form.get('confirmPassword');
+    if(pass.value==confirmpass.value){
+      return null;
+    }else{
+      confirmpass.setErrors({invalid:'pass w repass  not match'});
+      return {invalid:'pass w repass'};
+    }
+  }
   ngOnInit() {
   }
 
@@ -39,6 +61,7 @@ export class RegisterComponent implements OnInit {
       console.log(data.value[key]);
       
       mydata.append(key,data.value[key]);
+      mydata.append('profileImage',this.imgSrc,this.imgSrc.name);
       
     }
     

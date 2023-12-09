@@ -6,7 +6,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddEditCategoryComponent } from './components/Add-Edit-category/Add-Edit-category.component';
 
 const routes: Routes=[
-  {path:'',component:CategoriesComponent}
+  {path:'',component:CategoriesComponent},
+  {path:'edit/:id',component:AddEditCategoryComponent},
+  {path:'view/:id' ,component:AddEditCategoryComponent}
+
+
 ]
 @NgModule({
   imports: [

@@ -20,14 +20,17 @@ export class AddEditRecipeComponent implements OnInit {
   recipeId:any;
   isUpdatedPage:boolean=false;
   recipeData:any;
+
 RecipeForm=new FormGroup({
   name:new FormControl(null),
+
   description:new FormControl(null),
   price:new FormControl(null),
   tagId:new FormControl(null),
   categoriesIds:new FormControl(null),
 
 })
+
   constructor( private _HelperService:HelperService,private _RecipeService:RecipeService,private _ActivatedRoute:ActivatedRoute,private router:Router,private toastr:ToastrService) { 
  this.recipeId=_ActivatedRoute.snapshot.params['id'];
  if(this.recipeId){
@@ -140,5 +143,6 @@ onRemove(event:any) {
   console.log(event);
   this.files.splice(this.files.indexOf(event), 1);
 }
+
 
 }

@@ -2,11 +2,20 @@
     <div class="container">
         <div class="row">
             <div class="col-3 ms-auto">
-                <div class="user-profile d-flex align-items-center">
-                    <div class="user-Avater">
-                     <img src="../../../assets/images/nav-img.svg" class="w-100" alt="">
+                <div class="user-profile d-flex align-items-center" *ngIf="currentuser">
+                    <div class="user-Avater m-2">
+                        <img *ngIf="currentuser.imagePath" [src]="'https://upskilling-egypt.com/'+currentuser.imagePath" class="w-100" alt="">
+                        <img *ngIf="!currentuser.imagePath" src='../../../assets/images/logo.svg' class="w-100" alt="">
+
                     </div>
-                    <span>User Name</span>
+                    <span>
+                       <span class="h6">
+
+                        {{currentuser.userName}}
+                        </span>
+                        <span class=" d-block ms-3 text-muted">{{currentuser.group.name}}</span>
+
+                    </span>
                 </div>
             </div>
         </div>

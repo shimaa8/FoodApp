@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
+import { Observable } from 'rxjs';
 import { ILogin } from 'src/app/models/login';
 HttpClient
 @Injectable({
@@ -31,7 +32,7 @@ onRestPassword(data:string){
   return this._HttpClient.post('Users/Reset',data)
 }
 
-onChangePassword(data:string){
+onChangePassword(data:string):Observable<any>{
   return this._HttpClient.put('Users/ChangePassword',data);
 }
 getProfile(){
