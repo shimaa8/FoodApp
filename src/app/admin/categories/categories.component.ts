@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { CategoryService } from './services/category.service';
 import { ICategory, ICategoryTable } from './models/category';
 import {PageEvent} from '@angular/material/paginator';
 import { AddEditCategoryComponent } from './components/Add-Edit-category/Add-Edit-category.component';
-import { MatDialog } from '@angular/material/dialog';
+import {  MatDialog, } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { DeleteDialogComponent } from 'src/app/sheard/delete-dialog/delete-dialog.component';
 import { HelperService } from 'src/app/services/helper.service';
@@ -134,7 +134,38 @@ openAddDialog(): void {
   });
   
 }
+openEditCategory(categoryData:any){
+  const dialogRef = this.dialog.open(AddEditCategoryComponent, {
+    data: {CategoryName:categoryData.name},
+    width:'40%'
+  });
+  console.log(categoryData.name);
+  dialogRef.afterClosed().subscribe((result)=>{
+    if(result){
+      console.log(result);
+      this.onEditCategory(categoryData.id,result);
+    }
+  })
+  
+}
 
+onEditCategory(id:number,name:string){
+  this._CategoryService.editCaregory(id,name).subscribe({
+    next:(res)=>{
+      console.log(res);
+      this.TableResponse=res;
+      this.TableData=this.TableResponse?.data
+      
+    },error:(err)=>{
+      console.log(err.message);
+      
+    },
+    complete:()=>{
+    this.ToastrService.success("edit category","successfully");
+    this.gettableData();
+    }
+  })
+}
 
 }
 

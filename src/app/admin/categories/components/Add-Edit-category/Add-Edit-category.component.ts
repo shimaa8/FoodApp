@@ -1,6 +1,6 @@
 import { CategoryService } from './../../services/category.service';
-import { Component, OnInit, Optional } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
+import {   MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ICategory } from '../../models/category';
 
@@ -15,14 +15,9 @@ isUpdatedpage:boolean=false;
 categoryData:any;
 categoryId:any;
 
-  constructor( @Optional() private dialogRef:MatDialogRef<AddEditCategoryComponent>,private _ActivatedRoute:ActivatedRoute,private _CategoryService:CategoryService) { 
-   this.categoryId=_ActivatedRoute.snapshot.params['id'];
-   if(this.categoryId){
-    this.isUpdatedpage=true;
-    this.getCategoryById(this.categoryId);
-   }else{
-    this.isUpdatedpage=false;
-   }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: any, @Optional() private dialogRef:MatDialogRef<AddEditCategoryComponent>,private _ActivatedRoute:ActivatedRoute,private _CategoryService:CategoryService) { 
+ 
   }
 
   ngOnInit() {
@@ -31,17 +26,5 @@ onclose(){
   this.dialogRef.close();
 }
 
-getCategoryById(id:number){
-  this._CategoryService.getCategorieById(id).subscribe({
-    next:(res)=>{
-      console.log(res);
-      this.categoryData=res;
-      
-    },error:(err)=>{
 
-    },complete:()=>{
-      
-    }
-  })
-}
 }

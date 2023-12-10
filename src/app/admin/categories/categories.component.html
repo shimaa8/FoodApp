@@ -59,12 +59,12 @@
               <i class="fa-solid fa-ellipsis fa-2x"></i>
             </button>
             <ul class="dropdown-menu">
-              <li><a  [routerLink]="['/dashboard/admin/categories/view',item.id]"    class="dropdown-item" >
-                <span><i class="fa-solid fa-eye"></i></span>
+              <li><a   (click)="openEditCategory(item)"    class="dropdown-item" >
+                <span><i  class="fa-solid fa-eye"></i></span>
                 <span>View</span>
               </a>   
               </li>
-              <li><a  [routerLink]="['/dashboard/admin/categories/edit',item.id]" class="dropdown-item" >
+              <li><a  (click)="openEditCategory(item)" class="dropdown-item" >
                 <span><i class="fa-solid fa-pen-to-square"></i></span>
                 <span>Edit</span>
               </a>   

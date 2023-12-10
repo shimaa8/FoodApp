@@ -57,7 +57,7 @@ export class ChangepasswordComponent  {
              
         },
         error:(err)=>{
-          this.toastr.error('error', ' Error');
+          this.toastr.error(err, ' Error');
     
           
         },
