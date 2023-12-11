@@ -74,6 +74,7 @@ menu:IMenu[]=[
     link:'/dashboard/user/favorites',
     isActive:this.isUser()
   },
+
   
 ]
 

@@ -52,19 +52,22 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(data:FormGroup){
-    let mydata=new FormData();
-    console.log(data.value);
-    let myMap=new Map(Object.entries(data.value));
-    console.log(myMap);
-    for (const [key,val] of myMap){
-      console.log(key,val);
-      console.log(data.value[key]);
-      
-      mydata.append(key,data.value[key]);
-      
-    }
     
+    let mydata=new FormData();
+    mydata.append('userName',data.value.userName);
+    mydata.append('email',data.value.email);
+    mydata.append('country',data.value.country);
+    mydata.append('phoneNumber',data.value.phoneNumber);
     mydata.append('profileImage',this.imgSrc,this.imgSrc.name);
+
+
+    mydata.append('password',data.value.password);
+
+    mydata.append('confirmPassword',data.value.confirmPassword);
+   
+
+    
+    
 
     this._AuthService.onRegister(mydata).subscribe({
       next:(res:any)=>{

@@ -64,10 +64,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onResetRequest(data:string){
+  onResetRequest(email:string){
       
        
-    this._AuthService.onRequestRestPassword(data).subscribe({
+    this._AuthService.onRequestRestPassword(email).subscribe({
       next:(res)=>{
            console.log(res);
            
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
       complete:()=>{
         this.toastr.success(this.Message, 'Successfully!');
         this.router.navigate(['/auth/ResetPassword']);
-        localStorage.setItem('email',data);
+        localStorage.setItem('email',email);
 
       }
     })

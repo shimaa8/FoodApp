@@ -24,7 +24,7 @@ deletCategory(id:number):Observable<any>{
   return this._HttpClient.delete(`Category/${id}`)
 
 }
-editCaregory(id:number,data:any):Observable<any>{
-  return this._HttpClient.put(`Category/${id}`,data)
+editCategory(id:number,data:any):Observable<any>{
+  return this._HttpClient.put(`Category/${id}`,{name:data})
 }
 }

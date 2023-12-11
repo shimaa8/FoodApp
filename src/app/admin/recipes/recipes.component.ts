@@ -2,6 +2,9 @@ import { Component, OnInit} from '@angular/core';
 import { IRecipe, IRecipeTable, ITag } from './models/recipe';
 import { RecipeService } from './services/recipe.service';
 import { HelperService } from 'src/app/services/helper.service';
+import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteDialogComponent } from 'src/app/sheard/delete-dialog/delete-dialog.component';
 
 @Component({
   selector: 'app-recipes',
@@ -14,14 +17,14 @@ export class RecipesComponent implements OnInit {
   pageSize:number=20;
   pageNumber:number|undefined=1;
   TableResponse:IRecipeTable|undefined;
-  TableData:IRecipe[]=[];
+  TableData:IRecipe[]|undefined=[]=[];
   tagId:any;
   RecipeData:any;
   tags:ITag[]=[];
 data: any;
 
   constructor(private _RecipeService:RecipeService,private _HelperService:HelperService
-     ) { }
+  , private dialog:MatDialog,private _ToastrService:ToastrService  ) { }
 
   ngOnInit() {
     this.getAllTags();
@@ -56,7 +59,42 @@ getAllTags(){
   
 }
 
+ondeleteRecipe(id:number){
+  this._RecipeService.deleteRecipes(id).subscribe({
+    next:(res)=>{
+      this.TableResponse=res;
+      this.TableData=this.TableResponse?.data
+      
+    },error:(err)=>{
+      console.log(err);
+      
+    },complete:()=>{
+        this._ToastrService.success('Recipes deleted successfully');
+        this.gettableData();
+    }
+  })
+}
 
+openDeleteDialog(RecipeData:any): void {
+  console.log(RecipeData);
+  
+  const dialogRef = this.dialog.open(DeleteDialogComponent, {
+    data: RecipeData,
+    width:'40%'
+  });
+  
+dialogRef.afterClosed().subscribe(result => {
+  console.log('The dialog was closed');
+  console.log(result);
+  console.log(result.id);
+  
+  if(result){
+     this.ondeleteRecipe(result.id);      
+  }
+  
+});
+
+}
 
 
 

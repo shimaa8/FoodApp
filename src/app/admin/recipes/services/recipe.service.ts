@@ -24,7 +24,7 @@ editRecipe(id:number,data:any):Observable<any>{
 }
 
 deleteRecipes(id:number):Observable<any>{
-  return this._HttpClient.get(`Recipe/${id}`)
+  return this._HttpClient.delete(`Recipe/${id}`)
 }
 
 }

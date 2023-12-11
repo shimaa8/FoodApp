@@ -54,7 +54,7 @@
       </tr>
 
       </thead>
-      <tbody *ngIf="TableData.length>0">
+      <tbody *ngIf="TableData?.length">
       <tr *ngFor="let item of TableData">
         <td>{{item.name}}</td>
         <td class="w-25"><img [src]="'https://upskilling-egypt.com/' +item.imagePath" class="w-100"> </td>
@@ -88,8 +88,8 @@
               <span>Edit</span>
             </a>   
             </li>
-            <li><a class="dropdown-item" >
-              <span><i class="fa-solid fa-trash-can"></i></span>
+            <li><a (click)="openDeleteDialog(item)" class="dropdown-item" >
+              <span><i  class="fa-solid fa-trash-can"></i></span>
               <span >delete</span>
             </a>   
             </li>

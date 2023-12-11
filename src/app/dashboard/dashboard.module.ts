@@ -14,6 +14,8 @@ import { HomeComponent } from '../sheard/home/home.component';
           {path:'home',component:HomeComponent},
           {path:'admin',canActivate:[AdminGuard], loadChildren: () => import('../admin/admin.module').then(m => m.AdminModule) },
           {path:'user',canActivate:[UserGuard], loadChildren: () => import('../user/user.module').then(m => m.UserModule)},
+          {path:'userProfile', loadChildren: () => import('../user-profile/user-profile.module').then(m =>m.UserProfileModule )},
+
            
         ],
       }

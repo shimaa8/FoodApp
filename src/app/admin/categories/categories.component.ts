@@ -67,9 +67,6 @@ openAddDialog(): void {
     width:'40%'
   });
 
-  
-  
-
   dialogRef.afterClosed().subscribe(result => {
     console.log('The dialog was closed');
     console.log(result);
@@ -150,18 +147,17 @@ openEditCategory(categoryData:any){
 }
 
 onEditCategory(id:number,name:string){
-  this._CategoryService.editCaregory(id,name).subscribe({
+  this._CategoryService.editCategory(id,name).subscribe({
     next:(res)=>{
       console.log(res);
-      this.TableResponse=res;
-      this.TableData=this.TableResponse?.data
+      
       
     },error:(err)=>{
       console.log(err.message);
       
     },
     complete:()=>{
-    this.ToastrService.success("edit category","successfully");
+    this.ToastrService.success("category updated','Succes");
     this.gettableData();
     }
   })
