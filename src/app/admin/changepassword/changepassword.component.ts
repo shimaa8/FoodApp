@@ -17,19 +17,19 @@ export class ChangepasswordComponent  {
     oldPassword: new FormControl(null, [
       Validators.required,
       Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
       ),
     ]),
     newPassword: new FormControl(null, [
       Validators.required,
       Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
       ),
     ]),
     confirmNewPassword: new FormControl(null, [
       Validators.required,
       Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
       ),
     ]),
   });

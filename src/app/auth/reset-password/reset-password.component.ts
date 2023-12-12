@@ -23,13 +23,13 @@ export class ResetPasswordComponent implements OnInit {
     password: new FormControl(null, [
       Validators.required,
       Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
       ),
     ]),
     confirmPassword: new FormControl(null, [
       Validators.required,
       Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
+        '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$'
       ),
     ]),
     seed:new FormControl(null,[Validators.required]),

@@ -21,7 +21,7 @@ export class UserProfileComponent implements OnInit {
     country:new FormControl(null,[Validators.required]),
     phoneNumber:new FormControl(null,[Validators.required,Validators.pattern('^01[0-2,5]{1}[0-9]{8}$')]),
     profileImage:new FormControl(null,[Validators.required]),
-    confirmPassword:new FormControl(null,[Validators.required,Validators.pattern( '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$')]),
+    confirmPassword:new FormControl(null,[Validators.required,Validators.pattern('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,16}$')]),
 
    
     
