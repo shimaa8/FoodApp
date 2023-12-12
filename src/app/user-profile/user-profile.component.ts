@@ -21,13 +21,10 @@ export class UserProfileComponent implements OnInit {
     country:new FormControl(null,[Validators.required]),
     phoneNumber:new FormControl(null,[Validators.required,Validators.pattern('^01[0-2,5]{1}[0-9]{8}$')]),
     profileImage:new FormControl(null,[Validators.required]),
+    confirmPassword:new FormControl(null,[Validators.required,Validators.pattern( '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$')]),
+
    
-    confirmPassword:new FormControl(null, new FormControl(null, [
-      Validators.required,
-      Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
-      ),
-    ]),),
+    
   },
   )
   constructor(private _HelperService:HelperService,private toastr:ToastrService,private _AuthService:AuthService){
@@ -83,11 +80,13 @@ export class UserProfileComponent implements OnInit {
   this._AuthService.edituser(mydata).subscribe({
     next:(res)=>{
       console.log(res);
+      this.Message=res.message;
       
-    },error:()=>{
+    },error:(err)=>{
+      this.toastr.error( err.error.message,'Error');
 
     },complete:()=>{
-      this.toastr.success( ' user Profile updated!','success');
+      this.toastr.success( this.Message,'Successfully');
     }
   })
     

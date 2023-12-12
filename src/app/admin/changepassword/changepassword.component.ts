@@ -54,15 +54,17 @@ export class ChangepasswordComponent  {
    return  this._AuthService.onChangePassword(data.value).subscribe({
         next:(res)=>{
              console.log(res);
+             this.Message=res.message;
+
              
         },
         error:(err)=>{
-          this.toastr.error(err, ' Error');
+          this.toastr.error(err.error.message, ' Error');
     
           
         },
         complete:()=>{
-          this.toastr.success( ' change password Successfully!','success');
+          this.toastr.success( this.Message,'Successfully');
          
     
         }

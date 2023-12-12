@@ -13,6 +13,7 @@ import { RequestResetPasswordComponent } from '../request-reset-password/request
 })
 export class ResetPasswordComponent implements OnInit {
   email:string=''
+  Message:string=''
   hide:boolean=true;
   hideConfirm:boolean=true
 
@@ -44,17 +45,18 @@ export class ResetPasswordComponent implements OnInit {
     this._AuthService.onRestPassword(data.value).subscribe({
       next:(res:any)=>{
         console.log(res);
-        
+        this.Message=res.message;
+
        
         
       },error:(err:any)=>{
         
-        this.toastr.error('Hello world!', 'Toastr fun!');
+        this.toastr.error(err.error.message, 'Toastr fun!');
 
 
         
       },complete:()=>{
-        this.toastr.success('Hello world!', 'Toastr fun!');
+        this.toastr.success(this.Message, 'Toastr fun!');
 
 
       }
