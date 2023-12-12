@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '../services/helper.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
+import { AuthService } from '../auth/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user-profile',
@@ -28,7 +30,7 @@ export class UserProfileComponent implements OnInit {
     ]),),
   },
   )
-  constructor(private _HelperService:HelperService,private _ActivatedRoute:ActivatedRoute){
+  constructor(private _HelperService:HelperService,private toastr:ToastrService,private _AuthService:AuthService){
     
 
    
@@ -56,6 +58,8 @@ export class UserProfileComponent implements OnInit {
           email:this.currentuser.email,
           country:this.currentuser.country,
           phoneNumber:this.currentuser.phoneNumber,
+          confirmPassword:this.currentuser.confirmPassword,
+
 
 
 
@@ -76,7 +80,16 @@ export class UserProfileComponent implements OnInit {
 
     mydata.append('confirmPassword',data.value.confirmPassword);
    
+  this._AuthService.edituser(mydata).subscribe({
+    next:(res)=>{
+      console.log(res);
+      
+    },error:()=>{
 
+    },complete:()=>{
+      this.toastr.success( ' user Profile updated!','success');
+    }
+  })
     
     
 

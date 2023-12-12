@@ -53,4 +53,8 @@ getRole(){
    this.role= localStorage.getItem('role');
   }
 }
+
+edituser(data:any):Observable<any>{
+  return this._HttpClient.put('Users',data);
+}
 }

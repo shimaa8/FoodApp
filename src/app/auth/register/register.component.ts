@@ -23,18 +23,9 @@ export class RegisterComponent implements OnInit {
     country:new FormControl(null,[Validators.required]),
     phoneNumber:new FormControl(null,[Validators.required,Validators.pattern('^01[0-2,5]{1}[0-9]{8}$')]),
     profileImage:new FormControl(null,[Validators.required]),
-    password:new FormControl(null, new FormControl(null, [
-      Validators.required,
-      Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
-      ),
-    ]),),
-    confirmPassword:new FormControl(null, new FormControl(null, [
-      Validators.required,
-      Validators.pattern(
-        '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$'
-      ),
-    ]),),
+    password:new FormControl(null,[Validators.required,Validators.pattern( '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$')]),
+    confirmPassword:new FormControl(null,[Validators.required,Validators.pattern( '^(?=.?[A-Z])(?=.?[a-z])(?=.?[0-9])(?=.?[#?!@$%^&*-]).{8,16}$')]),
+
   },{validators:this.matchpasswords})
   constructor( private _AuthService:AuthService,private toastr: ToastrService,private dialog: MatDialog,private router:Router) { }
 
@@ -71,7 +62,8 @@ export class RegisterComponent implements OnInit {
 
     this._AuthService.onRegister(mydata).subscribe({
       next:(res:any)=>{
-        console.log(res);
+        console.log(res.message);
+        this.Message=res.message;
         
        
         

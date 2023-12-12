@@ -17,29 +17,36 @@
                   <span class="input-group-text" id="basic-addon1"><i class="fa-regular fa-user"></i></span>
                   <input formControlName="userName" type="text" class="form-control" placeholder="Enter your userName"
                   aria-label="Enter your userName" aria-describedby="basic-addon1">
-                 
-    
                 </div>
-              
+                <div class="alert alert-danger my-2" *ngIf="registerForm.get('userName')?.errors && registerForm.get('userName')?.touched">
+                  <p *ngIf="registerForm.get('userName')?.errors?.['required']" class="mb-0">
+                    userName is required
+                  </p>
+                    </div>
               </div>
               <div class="col-md-6">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-mobile-screen"></i></span>
                   <input formControlName="email" type="text" class="form-control" placeholder="Enter your E-mail"
                   aria-label="Enter your Email" aria-describedby="basic-addon1">
-                 
-    
                 </div>
-                
+                <div class="alert alert-danger my-2" *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched">
+                  <p *ngIf="registerForm.get('email')?.errors?.['required']" class="mb-0">
+                    Email is required
+                  </p>
+                    </div>
               </div>
               <div class="col-md-6">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-flag"></i></span>
                   <input formControlName="country" type="text" class="form-control" placeholder="country"
                   aria-label="country" aria-describedby="basic-addon1">
-                 
-    
                 </div>
+                <div class="alert alert-danger my-2" *ngIf="registerForm.get('country')?.errors && registerForm.get('country')?.touched">
+                  <p *ngIf="registerForm.get('country')?.errors?.['required']" class="mb-0">
+                    country is required
+                  </p>
+                    </div>
                
               </div>
               <div class="col-md-6">
@@ -47,15 +54,19 @@
                   <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-phone"></i></span>
                   <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Phone Number"
                  
-                  aria-label="phoneNumber" aria-describedby="basic-addon1">
-                 
-    
+                  aria-label="phoneNumber" aria-describedby="basic-addon1"> 
                 </div>
-               
+                <div class="alert alert-danger my-2" *ngIf="registerForm.get('phoneNumber')?.errors && registerForm.get('phoneNumber')?.touched">
+                  <p *ngIf="registerForm.get('phoneNumber')?.errors?.['required']" class="mb-0">
+                    PhoneNumber is required
+                  </p>
+                    </div>
               </div>
+
               <div class="col-md-6">
                 <div class="position-relative">
                   <div class="input-group mb-3">
+                    
                     <span class="input-group-text">
                       <i class="fa-solid fa-lock"></i
                     ></span>
@@ -63,13 +74,24 @@
                       formControlName="password"
                       [type]="hide ? 'password' : 'text'"
                       class="form-control"
-                      placeholder="Old Password"
+                      placeholder="password"
                     />
                     <span class="input-group-text eye-icon" (click)="hide = !hide">
                       <i class="fa-solid" [class]="hide ? 'fa-eye-slash' : 'fa-eye'"></i>
                     </span>
+                    
                   </div>
+                  <div class="alert alert-danger my-2" *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched">
+                    <p *ngIf="registerForm.get('password')?.errors?.['required']" class="mb-0">
+                      Password is required
+                    </p>
+                    <p *ngIf="registerForm.get('password')?.errors?.['pattern']" class="mb-0">
+                      Password must have A,a @%$# from 8,16
+                    </p>
+                      </div>
+                
                 </div>
+             
               </div>
             
               <div class="col-md-6">
@@ -80,7 +102,7 @@
                       formControlName="confirmPassword"
                       [type]="hideConfirm ? 'password' : 'text'"
                       class="form-control"
-                      placeholder="New Password"
+                      placeholder="confirm Password"
                     />
                     <span
                       class="input-group-text eye-icon"
@@ -92,8 +114,19 @@
                       ></i>
                     </span>
                   </div>
+                  <div class="alert alert-danger my-2" *ngIf="registerForm.get('confirmPassword')?.errors && registerForm.get('confirmPassword')?.touched">
+                    <p *ngIf="registerForm.get('confirmPassword')?.errors?.['invalid']" class="mb-0">
+                      ConfirmPassword not match password required
+                    </p>
+                    <p *ngIf="registerForm.get('confirmPassword')?.errors?.['required']" class="mb-0">
+                      ConfirmPassword is required
+                    </p>
+                    <p *ngIf="registerForm.get('confirmPassword')?.errors?.['pattern']" class="mb-0">
+                      confirmPassword must have A,a @%$# from 8,16
+                    </p>
+                      </div>
                 </div>
-         
+            
               </div>
               <div class="col-md-12 text-center">
                 <ngx-dropzone (change)="onSelect($event)" [multiple]="false">

@@ -25,9 +25,9 @@ export class LoginComponent implements OnInit {
   onSubmit(data:FormGroup){
     this._AuthService.onlogin(data.value).subscribe({
       next:(res:any)=>{
-        console.log(res);
-        
-         this.Message=res.message;        
+        console.log(res); 
+       
+               
        localStorage.setItem('token',res.token);      
         this._AuthService.getProfile();
        
@@ -35,10 +35,9 @@ export class LoginComponent implements OnInit {
       },error:(err)=>{
         
         this.toastr.error(err.error.message, ' Error!');
-
-
-        
+   
       },complete:()=>{
+
         this.router.navigate(['/dashboard'])
        // console.log(this.Message);
         
@@ -59,18 +58,20 @@ export class LoginComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      this.onResetRequest(result);
+      if(result){
+        this.onResetRequest(result);
+
+      }
       
     });
   }
 
-  onResetRequest(email:string){
-      
-       
-    this._AuthService.onRequestRestPassword(email).subscribe({
-      next:(res)=>{
+  onResetRequest(data:string){
+    this._AuthService.onRequestRestPassword(data).subscribe({
+      next:(res:any)=>{
            console.log(res);
-           
+           this.Message=res.message;
+
       },
       error:(err)=>{
         this.toastr.error(err.error.message, ' Error');
@@ -80,7 +81,7 @@ export class LoginComponent implements OnInit {
       complete:()=>{
         this.toastr.success(this.Message, 'Successfully!');
         this.router.navigate(['/auth/ResetPassword']);
-        localStorage.setItem('email',email);
+        localStorage.setItem('email',data);
 
       }
     })

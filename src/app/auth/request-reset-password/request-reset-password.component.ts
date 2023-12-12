@@ -16,7 +16,7 @@ email:string='';
   }
 
 
-  onNoclick(){
+  onClose(){
     this.dialogRef.close();
   }
 }

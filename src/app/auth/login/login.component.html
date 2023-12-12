@@ -28,9 +28,13 @@
             </div>
             <div class="alert alert-danger my-2" *ngIf="loginForm.get('password')?.errors && loginForm.get('password')?.touched">
               <p *ngIf="loginForm.get('password')?.errors?.['required']" class="mb-0">
-                password is required
+                Password is required
+              </p>
+              <p *ngIf="loginForm.get('password')?.errors?.['pattern']" class="mb-0">
+                Password must have A,a @%$# from 8,16
               </p>
                 </div>
+      
             <div class="alert alert-danger my-2" *ngIf="loginForm.get('code')?.errors && loginForm.get('code')?.touched">
               <p *ngIf="loginForm.get('code')?.errors?.['required']" class="mb-0">
               code is required
