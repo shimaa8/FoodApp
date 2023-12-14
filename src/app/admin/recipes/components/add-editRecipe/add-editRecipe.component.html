@@ -1,4 +1,16 @@
 <section class="container">
+  <section>
+    <h2  class="pt-5 ">Fill the  <span class="text-main">Recipes !</span></h2>
+    <div class=" home-head  p-5 align-items-center d-flex justify-content-between">
+        <p>you can now fill the meals easily using the table and form ,
+             click here and sill it with the table !</p>
+             <button routerLink="/dashboard/admin/recipes" class="btn btn-success">All Recipes <i class="fa-solid fa-arrow-right"></i></button>
+
+    </div>
+    <div>
+    </div>
+
+</section>
   <form [formGroup]="RecipeForm" (ngSubmit)="onSubmit(RecipeForm)">
   <div class="row  card-auth shadow-sm">
     <div class="col-md-10 mx-auto ">
@@ -54,10 +66,10 @@
         </ngx-dropzone>
         
       </div>
-      <div>
+      <div class="text-end py-2">
         <button type="button" class="outline-primary">Cancel</button>
 
-        <button   class="primary">Save</button>
+        <button   class="primary my-2">Save</button>
       </div>
     </div>
   </div>
