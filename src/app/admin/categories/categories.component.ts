@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
+  Message:string='';
   searchValue:string=''
   pageSize:number=20;
   isUpdatedpage:boolean=false;
@@ -150,14 +151,15 @@ onEditCategory(id:number,name:string){
   this._CategoryService.editCategory(id,name).subscribe({
     next:(res)=>{
       console.log(res);
-      
+      this.Message=res.message;
+
       
     },error:(err)=>{
-      console.log(err.message);
+      console.log(err.error.message);
       
     },
     complete:()=>{
-    this.ToastrService.success("category updated','Succes");
+    this.ToastrService.success(this.Message,'Successfully!');
     this.gettableData();
     }
   })

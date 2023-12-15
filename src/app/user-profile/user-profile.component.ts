@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '../services/helper.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { AuthService } from '../auth/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  currentuser:any;
+  currentUser:any;
   Message:string=''
   imgSrc:any;
   hideConfirm:boolean=true
@@ -27,35 +27,37 @@ export class UserProfileComponent implements OnInit {
     
   },
   )
-  constructor(private _HelperService:HelperService,private toastr:ToastrService,private _AuthService:AuthService){
+  constructor(private router:Router, private _HelperService:HelperService,private toastr:ToastrService,private _AuthService:AuthService){
     
 
    
   }
  
   ngOnInit() {
-    this.getCurrentuser();
+    this.getCurrentUser();
   }
 
-  getCurrentuser(){
+  getCurrentUser(){
     this._HelperService.getCurrentUser().subscribe({
       next:(res)=>{
-        this.currentuser=res;
-        console.log(this.currentuser);
+        
+        this.currentUser=res;
+        console.log(this.currentUser);
         
         
       },error:(err)=>{
         console.log(err);
         
       },complete:()=>{
-        this.imgSrc='https://upskilling-egypt.com:443/api/v1/'+this.currentuser+this.imgSrc;
+        this.imgSrc='https://upskilling-egypt.com:443/api/v1/'+this.currentUser+this.imgSrc;
 
         this.editProfile.patchValue({
-          userName:this.currentuser.userName,
-          email:this.currentuser.email,
-          country:this.currentuser.country,
-          phoneNumber:this.currentuser.phoneNumber,
-          confirmPassword:this.currentuser.confirmPassword,
+          userName:this.currentUser.userName,
+          email:this.currentUser.email,
+          country:this.currentUser.country,
+          phoneNumber:this.currentUser.phoneNumber,
+          confirmPassword:this.currentUser.confirmPassword,
+          
 
 
 
@@ -63,6 +65,7 @@ export class UserProfileComponent implements OnInit {
 
 
         })
+        this.router.navigate(['/dashboard/userProfile'])
       }
     })
   }

@@ -57,7 +57,7 @@
       <tbody *ngIf="TableData?.length">
       <tr *ngFor="let item of TableData">
         <td>{{item.name}}</td>
-        <td class="w-25"><img [src]="'https://upskilling-egypt.com/' +item.imagePath" class="w-100"> </td>
+        <td class="w-25"><img [src]="'https://upskilling-egypt.com:443/' +item.imagePath" class="w-100"> </td>
         <td>{{item.price}}</td>
         <td>{{item.description}}</td>
         <td>{{item.tag.name}}</td>
@@ -68,7 +68,9 @@
 
           </ng-container>
           <span *ngIf="item.category.length==0">
-          No Category
+            <div>
+              <img src="../../../assets/images/Not Found.svg" class="w-100" alt="">
+          </div>
           </span>
         </td>
         
@@ -79,17 +81,17 @@
           </button>
           <ul class="dropdown-menu">
             <li><a  [routerLink]="['/dashboard/admin/recipes/view',item.id]" class="dropdown-item" >
-              <span><i class="fa-solid fa-eye"></i></span>
+              <span><i class="fa-solid fa-eye text-main"></i></span>
               <span>View</span>
             </a>   
             </li>
             <li><a [routerLink]="['/dashboard/admin/recipes/edit',item.id]" class="dropdown-item" >
-              <span><i class="fa-solid fa-pen-to-square"></i></span>
+              <span><i class="fa-solid fa-pen-to-square text-main"></i></span>
               <span>Edit</span>
             </a>   
             </li>
             <li><a (click)="openDeleteDialog(item)" class="dropdown-item" >
-              <span><i  class="fa-solid fa-trash-can"></i></span>
+              <span><i  class="fa-solid fa-trash-can text-main"></i></span>
               <span >delete</span>
             </a>   
             </li>
@@ -101,7 +103,9 @@
       </tr>
       </tbody>
       <div *ngIf="TableData?.length==0" >
-       no Data
+        <div>
+          <img src="../../../assets/images/Not Found.svg" class="w-100" alt="">
+      </div>
       </div>
     </table>
     <div class="bg-info">

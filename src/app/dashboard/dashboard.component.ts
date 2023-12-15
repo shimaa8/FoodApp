@@ -44,6 +44,7 @@ menu:IMenu[]=[
     link:'/dashboard/home',
     isActive:this.isAdmin()||this.isUser()
   },
+  
   {
     title:'Users',
     icon:'fa-solid fa-user-group',
@@ -104,5 +105,6 @@ openDialog(): void {
     }
   });
 }
+
 }
 

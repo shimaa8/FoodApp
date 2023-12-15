@@ -53,4 +53,6 @@ pageNumber:number|undefined=1;
   gettableData() {
     throw new Error('Method not implemented.');
   }
+
+  
 }

@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { UserProfileComponent } from './user-profile.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SheardModule } from '../sheard/sheard.module';
+
 const routes:Routes=[
   {path:'',component:UserProfileComponent},
 
-  {path:'edit',component:UserProfileComponent},
 
 
 ]
@@ -15,6 +15,7 @@ const routes:Routes=[
     CommonModule,
     RouterModule.forChild(routes),
     SheardModule,
+    
   ],
   declarations: [UserProfileComponent]
 })

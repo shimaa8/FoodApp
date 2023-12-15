@@ -24,8 +24,8 @@
   <div class="row py-5 gy-3" *ngIf="myFav">
     <div class="col-md-4" *ngFor="let item of myFav">
       <div class="item shadow ">
-        <div>
-          <img [src]="'https://upskilling-egypt.com:443/'+item.recipe.imagePath" class="w-100"> 
+        <div class="text-center">
+          <img [src]="'https://upskilling-egypt.com:443/'+item.recipe.imagePath" class="w-100 "> 
         </div>
         <div class="p-3">
           <h4>{{item.recipe.name}}</h4>
@@ -37,19 +37,6 @@
       </div>
     </div>
 
-    <div>
-      <mat-paginator #paginator
-      class="demo-paginator"
-      (page)="handlePageEvent($event)"
-      [length]="TableResponse?.totalNumberOfRecords"
-      [pageSize]="TableResponse?.pageSize"
-      [pageSizeOptions]="[5,10,20]"
-      [pageIndex]="TableResponse?.pageNumber"
-      aria-label="Select page">
-</mat-paginator>
-
-
-
-    </div>
+   
   </div>
 </div>

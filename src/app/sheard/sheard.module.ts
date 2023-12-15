@@ -7,6 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { SidebarComponent } from './sidebar/sidebar.component';
@@ -26,7 +27,7 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
   declarations: [SheardComponent, SidebarComponent, NavbarComponent, HomeComponent,DeleteDialogComponent],
 
   exports:[ MatButtonModule,SidebarComponent ,NavbarComponent
-    ,HomeComponent,MatDividerModule, MatIconModule,MatSidenavModule,NgxDropzoneModule,HttpClientModule,DeleteDialogComponent,MatPaginatorModule,ReactiveFormsModule,MatDialogModule,FormsModule
+    ,HomeComponent,MatDividerModule, MatFormFieldModule,MatIconModule,MatSidenavModule,NgxDropzoneModule,HttpClientModule,DeleteDialogComponent,MatPaginatorModule,ReactiveFormsModule,MatDialogModule,FormsModule
   ]
 })
 export class SheardModule { }

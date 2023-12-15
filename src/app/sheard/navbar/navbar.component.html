@@ -2,25 +2,50 @@
     <div class="container">
         <div class="row">
             <div class="col-3 ms-auto">
-                <div class="user-profile d-flex align-items-center" *ngIf="currentuser">
+                <div class="user-profile d-flex align-items-center" *ngIf="currentUser">
                     <div class="user-Avater m-2">
-                        <img *ngIf="currentuser.imagePath" [src]="'https://upskilling-egypt.com/'+currentuser.imagePath" class="w-100" alt="">
-                        <img *ngIf="!currentuser.imagePath" src='../../../assets/images/logo.svg' class="w-100" alt="">
+                        <img *ngIf="currentUser.imagePath" [src]="'https://upskilling-egypt.com/'+currentUser.imagePath" class="w-100" alt="">
+                        <img *ngIf="!currentUser.imagePath" src='../../../assets/images/logo.svg' class="w-100" alt="">
 
                     </div>
                     <span>
                        <span class="h6">
 
-                        {{currentuser.userName}}
+                        {{currentUser.userName}}
                         </span>
-                        <span class=" d-block ms-3 text-muted">{{currentuser.group.name}}</span>
+                        <span class=" d-block ms-3 text-muted">{{currentUser.group.name}}</span>
 
                     </span>
 
                     
                 </div>
+           <div>
+         
            
+              
+              
+              
+            
+           </div>
+        
+
+           <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown link
+            </a>
+          
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/dashboard/userProfile">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
             </div>
+           
+              
+          
         </div>
+
     </div>
+
 </section>

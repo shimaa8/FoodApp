@@ -82,7 +82,7 @@
                     Drag & Drop or <span class="text-main">choose  a Item Image </span>to Upload</ngx-dropzone-label>
                   
                   <ngx-dropzone-label *ngIf="imgSrc">
-                    <img [src]="imgSrc" class="w-25" alt="">
+                    <!-- <img [src]="imgSrc" class="w-25" alt=""> -->
                     </ngx-dropzone-label>
                     <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
                     </ngx-dropzone-image-preview>  
