@@ -12,4 +12,9 @@ constructor(private _HttpClient:HttpClient) { }
 getAllUsers(parms:any):Observable<any>{
   return this._HttpClient.get('Users',{params:parms})
 }
+deletUsers(id:number):Observable<any>{
+  return this._HttpClient.delete(`Users/${id}`)
+
+}
+
 }

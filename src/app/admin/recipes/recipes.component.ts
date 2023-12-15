@@ -5,6 +5,7 @@ import { HelperService } from 'src/app/services/helper.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteDialogComponent } from 'src/app/sheard/delete-dialog/delete-dialog.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-recipes',
@@ -95,7 +96,14 @@ dialogRef.afterClosed().subscribe(result => {
 });
 
 }
-
+handlePageEvent(e: PageEvent) {
+  console.log(e);
+  
+  this.pageSize=e.pageSize;
+  this.pageNumber=this.TableResponse?.pageNumber;
+  this.gettableData()
+  
+}
 
 
 }

@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SheardModule } from '../sheard/sheard.module';
 const routes:Routes=[
   {path:'',component:UserProfileComponent},
+
   {path:'edit',component:UserProfileComponent},
 
 

@@ -1,6 +1,10 @@
+import { ToastrService } from 'ngx-toastr';
+import { DeleteDialogComponent } from 'src/app/sheard/delete-dialog/delete-dialog.component';
 import { IUser, IUserTable } from './models/admin-users';
 import { UsersAdminService } from './services/Users-admin.service';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ICategory } from '../categories/models/category';
 
 @Component({
   selector: 'app-users',
@@ -13,8 +17,10 @@ export class UserComponent implements OnInit {
   searchValue:string='';
   groupId:number=0;
   TableResponse:IUserTable|undefined
-  TableData:IUser[]=[];
-  constructor(private _UsersAdminService:UsersAdminService) { }
+  TableData:IUser[]|undefined=[];
+  _CategoryService: any;
+
+  constructor(private _UsersAdminService:UsersAdminService,private dialog:MatDialog,private tostar :ToastrService) { }
 
   ngOnInit() {
     this.gettableData();
@@ -48,4 +54,41 @@ export class UserComponent implements OnInit {
     })
   
   }
+
+  ondeletUsers(id:number){
+    this._UsersAdminService.deletUsers(id).subscribe({
+      next:(res:any)=>{
+        this.TableResponse=res;
+        this.TableData=this.TableResponse?.data
+        
+      },error:(err:any)=>{
+        console.log(err);
+        
+      },complete:()=>{
+          this.tostar.success('Users deleted successfully');
+          this.gettableData();
+      }
+    })
+  }
+  
+  openDeleteDialog(UserData:any): void {
+    console.log(UserData);
+    
+    const dialogRef = this.dialog.open(DeleteDialogComponent, {
+      data: UserData,
+      width:'40%'
+    });
+    
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    console.log(result);
+    console.log(result.id);
+    
+    if(result){
+       this.ondeletUsers(result.id);      
+    }
+    
+  });
+  
+}
 }

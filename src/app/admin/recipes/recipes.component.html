@@ -110,5 +110,19 @@
 
 
     </div>
+    <div class="bg-info">
+      <mat-paginator #paginator
+      class="demo-paginator"
+      (page)="handlePageEvent($event)"
+      [length]="TableResponse?.totalNumberOfRecords"
+      [pageSize]="TableResponse?.pageSize"
+      [pageSizeOptions]="[5,10,20]"
+      [pageIndex]="TableResponse?.pageNumber"
+      aria-label="Select page">
+</mat-paginator>
+
+
+
+    </div>
   </div>
 </section>

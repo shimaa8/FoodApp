@@ -90,6 +90,7 @@ onSubmit(data:FormGroup){
     },error:()=>{
   
     },complete:()=>{
+      this.toastr.success('Recipe updated','successfuly');
       this.router.navigate(['/dashboard/admin/recipes'])
     }
   })

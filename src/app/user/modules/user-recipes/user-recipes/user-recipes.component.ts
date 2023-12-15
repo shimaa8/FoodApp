@@ -6,6 +6,7 @@ import { RecipeService } from 'src/app/admin/recipes/services/recipe.service';
 import { HelperService } from 'src/app/services/helper.service';
 import { RecipeDataComponent } from '../recipe-data/recipe-data.component';
 import { FavoritesService } from '../../favorites/services/favorites.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-recipes',
@@ -90,5 +91,13 @@ getAllTags(){
     this.tags=res;
   }
   })
+}
+handlePageEvent(e: PageEvent) {
+  console.log(e);
+  
+  this.pageSize=e.pageSize;
+  this.pageNumber=this.TableResponse?.pageNumber;
+  this.gettableData()
+  
 }
 }
