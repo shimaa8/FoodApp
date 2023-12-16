@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HelperService } from '../services/helper.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router} from '@angular/router';
+import {  Router} from '@angular/router';
 import { AuthService } from '../auth/services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,7 +15,7 @@ export class UserProfileComponent implements OnInit {
   Message:string=''
   imgSrc:any;
   hideConfirm:boolean=true
-  editProfile=new FormGroup({
+  userProfile=new FormGroup({
     userName:new FormControl(null,[Validators.required]),
     email:new FormControl(null,[Validators.required,Validators.email]),
     country:new FormControl(null,[Validators.required]),
@@ -43,29 +43,11 @@ export class UserProfileComponent implements OnInit {
         
         this.currentUser=res;
         console.log(this.currentUser);
-        
-        
       },error:(err)=>{
         console.log(err);
         
       },complete:()=>{
-        this.imgSrc='https://upskilling-egypt.com:443/api/v1/'+this.currentUser+this.imgSrc;
-
-        this.editProfile.patchValue({
-          userName:this.currentUser.userName,
-          email:this.currentUser.email,
-          country:this.currentUser.country,
-          phoneNumber:this.currentUser.phoneNumber,
-          confirmPassword:this.currentUser.confirmPassword,
-          
-
-
-
-
-
-
-        })
-        this.router.navigate(['/dashboard/userProfile'])
+     
       }
     })
   }

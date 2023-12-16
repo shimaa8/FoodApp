@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         console.log(res); 
        
                
-       localStorage.setItem('token',res.token);      
+       localStorage.setItem('userToken',res.token);      
         this._AuthService.getProfile();
        
         

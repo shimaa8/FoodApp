@@ -19,7 +19,7 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-     if (localStorage.getItem('token')!==null && localStorage.getItem('role')=="SuperAdmin"){
+     if (localStorage.getItem('userToken')!==null && localStorage.getItem('role')=="SuperAdmin"){
     return true
   }
   else{

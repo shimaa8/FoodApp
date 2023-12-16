@@ -6,6 +6,10 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class HelperService {
+  private darkMode = false;
+
+ 
+
 
 constructor(private _HttpClient:HttpClient) { }
 getTags():Observable<any>{
@@ -19,4 +23,17 @@ getCurrentUser():Observable<any>{
   return this._HttpClient.get('Users/CurrentUser');
 
 }
+isDarkMode() {
+  return this.darkMode;
 }
+setDarkMode(isDarkMode: boolean) {
+  this.darkMode = isDarkMode;
+  if (isDarkMode) {
+    document.body.classList.add('dark-theme');
+  } else {
+    document.body.classList.remove('dark-theme');
+  }
+}
+}
+
+

@@ -4,18 +4,23 @@ import { HelperService } from 'src/app/services/helper.service';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
+  isDarkMode: boolean;
 
   currentUser:any;
   userName=localStorage.getItem('userName')?localStorage.getItem('userName'):'Guest';
-
-
+hello(){
+  console.log('hello');
+  
+}
   constructor(private _HelperService:HelperService){
+    this.isDarkMode = this._HelperService.isDarkMode();
+
+
     this._HelperService.getCurrentUser().subscribe({
-      next:(res)=>{
+      next:(res:any)=>{
         console.log(res);
         this.currentUser=res;
         
@@ -25,6 +30,11 @@ export class NavbarComponent {
       }
     })
   }
+  toggleTheme() {
+    this.isDarkMode = !this.isDarkMode;
+    this._HelperService.setDarkMode(this.isDarkMode);
+  }
+  }
  
 
-}
+

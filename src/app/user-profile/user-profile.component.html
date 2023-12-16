@@ -1,4 +1,4 @@
-<section id="register">
+<section>
   <div class="container">
     <div class="row">
 
@@ -9,7 +9,7 @@
         </div>
           <h2 class="h5">Edit Profile</h2>
           <P>welcome Back!Please enter your details</P>
-           <form [formGroup]="editProfile " (ngSubmit)="onSubmit(editProfile)">
+           <form [formGroup]="userProfile " (ngSubmit)="onSubmit(userProfile)">
 
             <div  class="row">
               <div  class="col-md-6 d-flex">
@@ -82,7 +82,7 @@
                     Drag & Drop or <span class="text-main">choose  a Item Image </span>to Upload</ngx-dropzone-label>
                   
                   <ngx-dropzone-label *ngIf="imgSrc">
-                    <!-- <img [src]="imgSrc" class="w-25" alt=""> -->
+                    <img [src]="imgSrc" class="w-25" alt="">
                     </ngx-dropzone-label>
                     <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f" [removable]="true" (removed)="onRemove(f)">
                     </ngx-dropzone-image-preview>  

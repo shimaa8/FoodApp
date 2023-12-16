@@ -10,7 +10,7 @@ HttpClient
 export class AuthService {
 role:string|null='';
 constructor(private _HttpClient:HttpClient) {
-  if(localStorage.getItem('token')!==null){
+  if(localStorage.getItem('userToken')!==null){
     this.getProfile();
   }
  }
@@ -36,7 +36,7 @@ onChangePassword(data:string):Observable<any>{
   return this._HttpClient.put('Users/ChangePassword',data);
 }
 getProfile(){
- let enecode:any= localStorage.getItem('token');
+ let enecode:any= localStorage.getItem('userToken');
  let decode:any=jwtDecode(enecode);
  console.log(decode.userGroup);
  console.log(decode.userName);

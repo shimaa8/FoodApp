@@ -4,6 +4,7 @@ import { AuthService } from '../auth/services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangepasswordComponent } from '../admin/changepassword/changepassword.component';
+import { HelperService } from '../services/helper.service';
 
 interface IMenu{
   title:string,
@@ -18,11 +19,11 @@ interface IMenu{
 })
 export class DashboardComponent implements OnInit {
   isOpened:boolean=true;
-  toastr: any;
-  
+  isDarkMode: boolean;
 
-  constructor( private  _AuthService:AuthService,private router:Router,private dialog: MatDialog,private tostar: ToastrService) {
 
+  constructor(private _HelperService:HelperService, private  _AuthService:AuthService,private router:Router,private dialog: MatDialog,private tostar: ToastrService) {
+    this.isDarkMode = this._HelperService.isDarkMode();
 
 
    }
@@ -83,7 +84,7 @@ menu:IMenu[]=[
 
 logout(){
  localStorage.removeItem('role');
- localStorage.removeItem('token');
+ localStorage.removeItem('userToken');
  localStorage.removeItem('userName');
  this.router.navigate(['/auth'])
 
@@ -105,6 +106,9 @@ openDialog(): void {
     }
   });
 }
-
+toggleTheme() {
+  this.isDarkMode = !this.isDarkMode;
+  this._HelperService.setDarkMode(this.isDarkMode);
+}
 }
 

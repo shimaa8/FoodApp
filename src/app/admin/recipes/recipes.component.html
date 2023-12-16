@@ -57,7 +57,7 @@
       <tbody *ngIf="TableData?.length">
       <tr *ngFor="let item of TableData">
         <td>{{item.name}}</td>
-        <td class="w-25"><img [src]="'https://upskilling-egypt.com:443/' +item.imagePath" class="w-100"> </td>
+        <td class="w-25"><img [src]="'https://upskilling-egypt.com/' +item.imagePath" class="w-100"> </td>
         <td>{{item.price}}</td>
         <td>{{item.description}}</td>
         <td>{{item.tag.name}}</td>
